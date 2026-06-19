@@ -5,6 +5,7 @@ import java.time.LocalDate;
 public class Funcionario {
     private int idFuncionario;
     private String nome;
+    private String nomeUsuario;
     private String sexo;
     private LocalDate dataNascimento;
     private String email;
@@ -13,6 +14,14 @@ public class Funcionario {
     private TipoUsuario tipoUsuario;
     private String senhaHash;
 
+    public String getNomeUsuario() {
+        return nomeUsuario;
+    }
+
+    public void setNomeUsuario(String nomeUsuario) {
+        this.nomeUsuario = nomeUsuario;
+    }
+    
     public int getIdFuncionario() {
         return idFuncionario;
     }

@@ -43,9 +43,9 @@ CREATE TABLE ItemVenda (
     FOREIGN KEY (Codigo_Mercadoria) REFERENCES Mercadoria(Codigo)
 );
 
-INSERT INTO Funcionario (Nome_Usuario, Nome, Sexo, Data_Nascimento, Email, Tel, CPF, Tipo_Usuario, Senha) VALUES
-('Admin da Silva', 'admin', 'Feminino', '1990-05-14', 'ana.admin@supermercado.com', '(11) 99999-1111', '111.111.111-11', 'ADMINISTRADOR', '$2a$10$wK1yR9N1A7pQxUe8z/j5ou.1B2/8YxQzB9qP3h.R8aV1kM9bW'),
-('Padrão da Silva', 'padrao', 'Masculino', '1998-10-22', 'carlos.caixa@supermercado.com', '(11) 98888-2222', '222.222.222-22', 'PADRAO', '$2a$10$xyz123abc456def789ghi.jklmnopqrstuvwxyzABCDEFGHIJ');
+INSERT INTO Funcionario (Nome, Nome_Usuario, Sexo, Data_Nascimento, Email, Tel, CPF, Tipo_Usuario, Senha) VALUES
+('Admin da Silva', 'admin', 'Feminino', '1990-05-14', 'ana.admin@supermercado.com', '(11) 99999-1111', '111.111.111-11', 'ADMINISTRADOR', '$2a$10$uZRsNeZJ0u7KUoNKXakZp.AmdLD3Hb55FPWrMXvpp5TCKwOZIWKx6'),
+('Padrão da Silva', 'padrao', 'Masculino', '1998-10-22', 'carlos.caixa@supermercado.com', '(11) 98888-2222', '222.222.222-22', 'PADRAO', '$2a$10$wWX/0uzvnkwUag6ct35NSOAchknFBNqrDzOOxQJy6lKoVdPn/n6PS');
 
 INSERT INTO Mercadoria (Nome, Tipo, Modelo, Descricao, Preco_Unitario, Quantidade_Estoque, Fornecedor) VALUES
 ('Arroz Agulhinha 5kg', 'Alimento', 'Tipo 1', 'Arroz branco tradicional', 25.50, 100, 'Cerealista Juca'),
@@ -60,7 +60,7 @@ INSERT INTO Mercadoria (Nome, Tipo, Modelo, Descricao, Preco_Unitario, Quantidad
 INSERT INTO Venda (Data_Venda, Valor_Total, ID_Identificador_Funcionario) VALUES
 ('2026-05-10 14:30:00', 59.90, 2),
 ('2026-05-15 09:15:00', 55.00, 1),
-('2026-06-01 10:00:00', 33.00, 4),
+('2026-06-01 10:00:00', 33.00, 1),
 ('2026-06-05 18:20:00', 109.90, 2);
 
 INSERT INTO ItemVenda (ID_Venda, Codigo_Mercadoria, Quantidade, Subtotal) VALUES
