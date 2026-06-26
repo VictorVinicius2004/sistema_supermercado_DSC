@@ -6,12 +6,12 @@ public class TelaPrincipalFrame extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TelaPrincipalFrame.class.getName());
 
-    /**
-     * Creates new form TelaPrincipalFrame
-     */
+    private Funcionario funcionarioLogado;
+    
     public TelaPrincipalFrame(Funcionario funcionario) {
         initComponents();
         setLocationRelativeTo(null);
+        this.funcionarioLogado = funcionario;
     }
 
     /**
@@ -23,22 +23,110 @@ public class TelaPrincipalFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDesktopPane1 = new javax.swing.JDesktopPane();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu5 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu6 = new javax.swing.JMenu();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenu7 = new javax.swing.JMenu();
+        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem6 = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
+        jDesktopPane1.setLayout(jDesktopPane1Layout);
+        jDesktopPane1Layout.setHorizontalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 676, Short.MAX_VALUE)
+        );
+        jDesktopPane1Layout.setVerticalGroup(
+            jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 459, Short.MAX_VALUE)
+        );
+
+        jMenu5.setText("sair");
+
+        jMenuItem1.setText("sair");
+        jMenuItem1.addActionListener(this::jMenuItem1ActionPerformed);
+        jMenu5.add(jMenuItem1);
+
+        jMenuBar2.add(jMenu5);
+
+        jMenu6.setText("banco de dados");
+        jMenu6.addActionListener(this::jMenu6ActionPerformed);
+
+        jMenuItem2.setText("funcionario");
+        jMenu6.add(jMenuItem2);
+
+        jMenuItem3.setText("mercadoria");
+        jMenu6.add(jMenuItem3);
+
+        jMenuBar2.add(jMenu6);
+
+        jMenu7.setText("relatórios");
+
+        jMenuItem5.setText("estoque");
+        jMenu7.add(jMenuItem5);
+
+        jMenuItem4.setText("vendas");
+        jMenuItem4.addActionListener(this::jMenuItem4ActionPerformed);
+        jMenu7.add(jMenuItem4);
+
+        jMenuItem6.setText("financeiro");
+        jMenu7.add(jMenuItem6);
+
+        jMenuBar2.add(jMenu7);
+
+        jMenu1.setText("venda");
+        jMenuBar2.add(jMenu1);
+
+        setJMenuBar(jMenuBar2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jDesktopPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jDesktopPane1)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //sair
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    //banco de dados -> funcionario
+    private void jMenu6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu6ActionPerformed
+        CRUDFuncionariosFrame CRUDFuncionarios = new CRUDFuncionariosFrame(this.funcionarioLogado);
+    }//GEN-LAST:event_jMenu6ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu5;
+    private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
+    private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem6;
     // End of variables declaration//GEN-END:variables
 }

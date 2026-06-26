@@ -1,9 +1,12 @@
 package model.domain;
 
+import model.domain.Mercadoria;
+
 public class ItemVenda {
     private int idItemVenda;
     private int quantidade;
     private Double subtotal;
+    private Mercadoria mercadoria;
 
     public int getIdItemVenda() {
         return idItemVenda;
