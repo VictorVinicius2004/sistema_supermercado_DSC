@@ -1,6 +1,7 @@
 package view;
 
 import model.domain.Funcionario;
+import model.domain.TipoUsuario;
 
 public class TelaPrincipalFrame extends javax.swing.JFrame {
     
@@ -12,6 +13,10 @@ public class TelaPrincipalFrame extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         this.funcionarioLogado = funcionario;
+        boolean isAdmin = this.funcionarioLogado.getTipoUsuario() == TipoUsuario.ADMINISTRADOR;
+        menuItemFuncionarios.setVisible(isAdmin);
+        menuItemMercadorias.setVisible(isAdmin);
+        menuRelatorios.setVisible(isAdmin);
     }
 
     /**
@@ -25,16 +30,16 @@ public class TelaPrincipalFrame extends javax.swing.JFrame {
 
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jMenuBar2 = new javax.swing.JMenuBar();
-        jMenu5 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu6 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu7 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        menuCRUDs = new javax.swing.JMenu();
+        menuItemFuncionarios = new javax.swing.JMenuItem();
+        menuItemMercadorias = new javax.swing.JMenuItem();
+        menuItemSenha = new javax.swing.JMenuItem();
+        menuRelatorios = new javax.swing.JMenu();
+        menuItemRelatorioEstoque = new javax.swing.JMenuItem();
+        menuItemRelatoriovendas = new javax.swing.JMenuItem();
+        menuItemRelatorioFinanceiro = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
+        menuItemVendas = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -42,47 +47,49 @@ public class TelaPrincipalFrame extends javax.swing.JFrame {
         jDesktopPane1.setLayout(jDesktopPane1Layout);
         jDesktopPane1Layout.setHorizontalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 676, Short.MAX_VALUE)
+            .addGap(0, 744, Short.MAX_VALUE)
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 459, Short.MAX_VALUE)
+            .addGap(0, 521, Short.MAX_VALUE)
         );
 
-        jMenu5.setText("sair");
+        menuCRUDs.setText("banco de dados");
+        menuCRUDs.addActionListener(this::menuCRUDsActionPerformed);
 
-        jMenuItem1.setText("sair");
-        jMenuItem1.addActionListener(this::jMenuItem1ActionPerformed);
-        jMenu5.add(jMenuItem1);
+        menuItemFuncionarios.setText("funcionario");
+        menuItemFuncionarios.addActionListener(this::menuItemFuncionariosActionPerformed);
+        menuCRUDs.add(menuItemFuncionarios);
 
-        jMenuBar2.add(jMenu5);
+        menuItemMercadorias.setText("mercadoria");
+        menuItemMercadorias.addActionListener(this::menuItemMercadoriasActionPerformed);
+        menuCRUDs.add(menuItemMercadorias);
 
-        jMenu6.setText("banco de dados");
-        jMenu6.addActionListener(this::jMenu6ActionPerformed);
+        menuItemSenha.setText("alterar senha");
+        menuItemSenha.addActionListener(this::menuItemSenhaActionPerformed);
+        menuCRUDs.add(menuItemSenha);
 
-        jMenuItem2.setText("funcionario");
-        jMenu6.add(jMenuItem2);
+        jMenuBar2.add(menuCRUDs);
 
-        jMenuItem3.setText("mercadoria");
-        jMenu6.add(jMenuItem3);
+        menuRelatorios.setText("relatórios");
 
-        jMenuBar2.add(jMenu6);
+        menuItemRelatorioEstoque.setText("estoque");
+        menuRelatorios.add(menuItemRelatorioEstoque);
 
-        jMenu7.setText("relatórios");
+        menuItemRelatoriovendas.setText("vendas");
+        menuItemRelatoriovendas.addActionListener(this::menuItemRelatoriovendasActionPerformed);
+        menuRelatorios.add(menuItemRelatoriovendas);
 
-        jMenuItem5.setText("estoque");
-        jMenu7.add(jMenuItem5);
+        menuItemRelatorioFinanceiro.setText("financeiro");
+        menuRelatorios.add(menuItemRelatorioFinanceiro);
 
-        jMenuItem4.setText("vendas");
-        jMenuItem4.addActionListener(this::jMenuItem4ActionPerformed);
-        jMenu7.add(jMenuItem4);
-
-        jMenuItem6.setText("financeiro");
-        jMenu7.add(jMenuItem6);
-
-        jMenuBar2.add(jMenu7);
+        jMenuBar2.add(menuRelatorios);
 
         jMenu1.setText("venda");
+
+        menuItemVendas.setText("Abrir tela de vendas");
+        jMenu1.add(menuItemVendas);
+
         jMenuBar2.add(jMenu1);
 
         setJMenuBar(jMenuBar2);
@@ -91,42 +98,57 @@ public class TelaPrincipalFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jDesktopPane1)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    //sair
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
     //banco de dados -> funcionario
-    private void jMenu6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu6ActionPerformed
-        CRUDFuncionariosFrame CRUDFuncionarios = new CRUDFuncionariosFrame(this.funcionarioLogado);
-    }//GEN-LAST:event_jMenu6ActionPerformed
+    private void menuCRUDsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCRUDsActionPerformed
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_menuCRUDsActionPerformed
+
+    private void menuItemRelatoriovendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRelatoriovendasActionPerformed
         
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_menuItemRelatoriovendasActionPerformed
+
+    private void menuItemFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemFuncionariosActionPerformed
+        CRUDFuncionariosFrame CRUDFuncionarios = new CRUDFuncionariosFrame(this.funcionarioLogado);
+        jDesktopPane1.add(CRUDFuncionarios);
+        CRUDFuncionarios.setVisible(true);
+    }//GEN-LAST:event_menuItemFuncionariosActionPerformed
+
+    private void menuItemMercadoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemMercadoriasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_menuItemMercadoriasActionPerformed
+
+    private void menuItemSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemSenhaActionPerformed
+        AlterarSenhaFrame alterarSenha = new AlterarSenhaFrame(this.funcionarioLogado);
+        jDesktopPane1.add(alterarSenha);
+        alterarSenha.setVisible(true);
+    }//GEN-LAST:event_menuItemSenhaActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu5;
-    private javax.swing.JMenu jMenu6;
-    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenu menuCRUDs;
+    private javax.swing.JMenuItem menuItemFuncionarios;
+    private javax.swing.JMenuItem menuItemMercadorias;
+    private javax.swing.JMenuItem menuItemRelatorioEstoque;
+    private javax.swing.JMenuItem menuItemRelatorioFinanceiro;
+    private javax.swing.JMenuItem menuItemRelatoriovendas;
+    private javax.swing.JMenuItem menuItemSenha;
+    private javax.swing.JMenuItem menuItemVendas;
+    private javax.swing.JMenu menuRelatorios;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,6 +1,9 @@
+import view.LoginFrame;
+
 public class SistemaSupermercado {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        LoginFrame telaLogin = new LoginFrame();
+        telaLogin.setVisible(true);
     }
 }
