@@ -128,7 +128,9 @@ public class TelaPrincipalFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_menuItemFuncionariosActionPerformed
 
     private void menuItemMercadoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemMercadoriasActionPerformed
-        // TODO add your handling code here:
+        CRUDMercadoriasFrame CRUDMercadorias = new CRUDMercadoriasFrame();
+        jDesktopPane1.add(CRUDMercadorias);
+        CRUDMercadorias.setVisible(true);
     }//GEN-LAST:event_menuItemMercadoriasActionPerformed
 
     private void menuItemSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemSenhaActionPerformed
