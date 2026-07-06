@@ -23,12 +23,17 @@ public class ControladorCRUDMercadorias {
     }
     
     public static List<Mercadoria> search(Mercadoria m) {
-        if (m != null) {
-            return MercadoriaDAO.buscarMercadoriaFiltrada(m);
-        } else {
-            return MercadoriaDAO.listarMercadorias();
+    if (m != null) {
+        if (m.getCodigo() != 0) {
+            Mercadoria found = MercadoriaDAO.getMercadoria(m.getCodigo());
+            return found != null ? List.of(found) : List.of();
         }
+        return MercadoriaDAO.buscarMercadoriaFiltrada(m);
+    } else {
+        return MercadoriaDAO.listarMercadorias();
     }
+}
+
     
     public static Mercadoria buscarPorCodigo(int codigo) {
         return MercadoriaDAO.getMercadoria(codigo);
