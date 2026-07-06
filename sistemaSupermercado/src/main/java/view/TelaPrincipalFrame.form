@@ -47,6 +47,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="estoque"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemRelatorioEstoqueActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="menuItemRelatoriovendas">
               <Properties>
@@ -56,10 +59,13 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemRelatoriovendasActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="menuItemRelatorioFinanceiro">
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemRelatorioVendasDetalhado">
               <Properties>
-                <Property name="text" type="java.lang.String" value="financeiro"/>
+                <Property name="text" type="java.lang.String" value="vendas detalhado"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemRelatorioVendasDetalhadoActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
