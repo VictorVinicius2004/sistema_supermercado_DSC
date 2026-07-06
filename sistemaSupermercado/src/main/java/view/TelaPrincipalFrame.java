@@ -1,7 +1,16 @@
 package view;
 
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.view.JasperViewer;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.util.HashMap;
+import java.util.Map;
+import javax.swing.JOptionPane;
 import model.domain.Funcionario;
 import model.domain.TipoUsuario;
+import model.database.DatabaseConnection;
 
 public class TelaPrincipalFrame extends javax.swing.JFrame {
     
@@ -37,7 +46,7 @@ public class TelaPrincipalFrame extends javax.swing.JFrame {
         menuRelatorios = new javax.swing.JMenu();
         menuItemRelatorioEstoque = new javax.swing.JMenuItem();
         menuItemRelatoriovendas = new javax.swing.JMenuItem();
-        menuItemRelatorioFinanceiro = new javax.swing.JMenuItem();
+        menuItemRelatorioVendasDetalhado = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         menuItemVendas = new javax.swing.JMenuItem();
 
@@ -74,14 +83,16 @@ public class TelaPrincipalFrame extends javax.swing.JFrame {
         menuRelatorios.setText("relatórios");
 
         menuItemRelatorioEstoque.setText("estoque");
+        menuItemRelatorioEstoque.addActionListener(this::menuItemRelatorioEstoqueActionPerformed);
         menuRelatorios.add(menuItemRelatorioEstoque);
 
         menuItemRelatoriovendas.setText("vendas");
         menuItemRelatoriovendas.addActionListener(this::menuItemRelatoriovendasActionPerformed);
         menuRelatorios.add(menuItemRelatoriovendas);
 
-        menuItemRelatorioFinanceiro.setText("financeiro");
-        menuRelatorios.add(menuItemRelatorioFinanceiro);
+        menuItemRelatorioVendasDetalhado.setText("vendas detalhado");
+        menuItemRelatorioVendasDetalhado.addActionListener(this::menuItemRelatorioVendasDetalhadoActionPerformed);
+        menuRelatorios.add(menuItemRelatorioVendasDetalhado);
 
         jMenuBar2.add(menuRelatorios);
 
@@ -119,7 +130,36 @@ public class TelaPrincipalFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_menuCRUDsActionPerformed
 
     private void menuItemRelatoriovendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRelatoriovendasActionPerformed
-        
+        String dataInicioStr = JOptionPane.showInputDialog(this, 
+            "Data início (dd/MM/yyyy):", "Período", JOptionPane.QUESTION_MESSAGE);
+        if (dataInicioStr == null) return;
+
+        String dataFimStr = JOptionPane.showInputDialog(this, 
+            "Data fim (dd/MM/yyyy):", "Período", JOptionPane.QUESTION_MESSAGE);
+        if (dataFimStr == null) return;
+
+        try {
+            java.time.format.DateTimeFormatter fmt = java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            java.sql.Timestamp dataInicio = java.sql.Timestamp.valueOf(java.time.LocalDate.parse(dataInicioStr, fmt).atStartOfDay());
+            java.sql.Timestamp dataFim = java.sql.Timestamp.valueOf(java.time.LocalDate.parse(dataFimStr, fmt).atTime(23, 59, 59));
+
+            Connection conn = DatabaseConnection.getConnection();
+            InputStream stream = getClass().getResourceAsStream("/relatorios/RelatorioVendas.jasper");
+
+            Map<String, Object> parametros = new HashMap<>();
+            parametros.put("data_inicio", dataInicio);
+            parametros.put("data_fim", dataFim);
+
+            JasperPrint jasperPrint = JasperFillManager.fillReport(stream, parametros, conn);
+            JasperViewer viewer = new JasperViewer(jasperPrint, false);
+            viewer.setLocationRelativeTo(null);
+            viewer.setTitle("Relatório de Vendas");
+            viewer.setVisible(true);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Erro de relatório: " + e.getMessage());
+        }        
     }//GEN-LAST:event_menuItemRelatoriovendasActionPerformed
 
     private void menuItemFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemFuncionariosActionPerformed
@@ -146,6 +186,44 @@ public class TelaPrincipalFrame extends javax.swing.JFrame {
         Vendas.setVisible(true);
     }//GEN-LAST:event_menuItemVendasActionPerformed
 
+    private void menuItemRelatorioEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRelatorioEstoqueActionPerformed
+        try {
+            Connection conn = DatabaseConnection.getConnection();
+            InputStream stream = getClass().getResourceAsStream("/relatorios/relatorioEstoque.jasper");
+
+            Map<String, Object> parametros = new HashMap<>();
+
+            JasperPrint jasperPrint = JasperFillManager.fillReport(stream, parametros, conn);
+            JasperViewer viewer = new JasperViewer(jasperPrint, false);
+            viewer.setLocationRelativeTo(null);
+            viewer.setTitle("Relatório de Estoque Atual");
+            viewer.setVisible(true);
+        
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Erro de relatório: " + e.getMessage());
+        }
+    }//GEN-LAST:event_menuItemRelatorioEstoqueActionPerformed
+
+    private void menuItemRelatorioVendasDetalhadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRelatorioVendasDetalhadoActionPerformed
+        try {
+            Connection conn = DatabaseConnection.getConnection();
+            InputStream stream = getClass().getResourceAsStream("/relatorios/relatorioVendasDetalhado.jasper");
+
+            Map<String, Object> parametros = new HashMap<>();
+
+            JasperPrint jasperPrint = JasperFillManager.fillReport(stream, parametros, conn);
+            JasperViewer viewer = new JasperViewer(jasperPrint, false);
+            viewer.setLocationRelativeTo(null);
+            viewer.setTitle("Relatório de Vendas");
+            viewer.setVisible(true);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Erro de relatório: " + e.getMessage());
+        }
+    }//GEN-LAST:event_menuItemRelatorioVendasDetalhadoActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JMenu jMenu1;
@@ -154,7 +232,7 @@ public class TelaPrincipalFrame extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuItemFuncionarios;
     private javax.swing.JMenuItem menuItemMercadorias;
     private javax.swing.JMenuItem menuItemRelatorioEstoque;
-    private javax.swing.JMenuItem menuItemRelatorioFinanceiro;
+    private javax.swing.JMenuItem menuItemRelatorioVendasDetalhado;
     private javax.swing.JMenuItem menuItemRelatoriovendas;
     private javax.swing.JMenuItem menuItemSenha;
     private javax.swing.JMenuItem menuItemVendas;
