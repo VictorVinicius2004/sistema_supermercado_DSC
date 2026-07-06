@@ -32,6 +32,8 @@ CREATE TABLE Venda (
     Data_Venda DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     Valor_Total DECIMAL(10,2) NOT NULL,
     ID_Identificador_Funcionario INT NOT NULL,
+    Tipo_Pagamento VARCHAR(50) NOT NULL,
+    Valor_Pago DECIMAL(10,2) NOT NULL,
     FOREIGN KEY (ID_Identificador_Funcionario) REFERENCES Funcionario(ID_Funcionario)
 );
 

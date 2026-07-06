@@ -88,6 +88,7 @@ public class TelaPrincipalFrame extends javax.swing.JFrame {
         jMenu1.setText("venda");
 
         menuItemVendas.setText("Abrir tela de vendas");
+        menuItemVendas.addActionListener(this::menuItemVendasActionPerformed);
         jMenu1.add(menuItemVendas);
 
         jMenuBar2.add(jMenu1);
@@ -138,6 +139,12 @@ public class TelaPrincipalFrame extends javax.swing.JFrame {
         jDesktopPane1.add(alterarSenha);
         alterarSenha.setVisible(true);
     }//GEN-LAST:event_menuItemSenhaActionPerformed
+
+    private void menuItemVendasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemVendasActionPerformed
+        VendasFrame Vendas = new VendasFrame(this.funcionarioLogado);
+        jDesktopPane1.add(Vendas);
+        Vendas.setVisible(true);
+    }//GEN-LAST:event_menuItemVendasActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane jDesktopPane1;

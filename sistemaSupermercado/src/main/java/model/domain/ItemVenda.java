@@ -1,7 +1,5 @@
 package model.domain;
 
-import model.domain.Mercadoria;
-
 public class ItemVenda {
     private int idItemVenda;
     private int quantidade;
@@ -30,5 +28,12 @@ public class ItemVenda {
 
     public void setSubtotal(Double subtotal) {
         this.subtotal = subtotal;
+    }
+
+    public Mercadoria getMercadoria() {
+        return this.mercadoria; 
+    }
+    public void setMercadoria(Mercadoria mercadoria) {
+        this.mercadoria = mercadoria;
     }
 }
