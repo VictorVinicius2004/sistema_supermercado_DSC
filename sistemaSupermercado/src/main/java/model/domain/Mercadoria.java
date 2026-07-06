@@ -8,6 +8,15 @@ public class Mercadoria {
     private Double precoUnitario;
     private int quantidade;
     private String fornecedor;
+    private boolean ativo;
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
 
     public int getCodigo() {
         return codigo;

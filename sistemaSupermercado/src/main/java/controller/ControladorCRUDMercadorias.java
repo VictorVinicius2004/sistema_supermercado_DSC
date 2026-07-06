@@ -9,7 +9,7 @@ public class ControladorCRUDMercadorias {
         MercadoriaDAO.atualizarMercadoria(m);
     }
     
-    public static void deletar(Mercadoria m) {
+    public static void desativar(Mercadoria m) {
         MercadoriaDAO.deletarMercadoria(m);
     }
     

@@ -277,7 +277,7 @@ public class CRUDFuncionariosFrame extends javax.swing.JInternalFrame {
         botaoAtualizar.setText("Atualizar");
         botaoAtualizar.addActionListener(this::botaoAtualizarActionPerformed);
 
-        botaoDeletar.setText("Deletar");
+        botaoDeletar.setText("Desativar");
         botaoDeletar.addActionListener(this::botaoDeletarActionPerformed);
 
         try {
@@ -393,7 +393,7 @@ public class CRUDFuncionariosFrame extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 700, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
@@ -467,7 +467,7 @@ public class CRUDFuncionariosFrame extends javax.swing.JInternalFrame {
             Utilitarios.warningMsg("Nenhum funcionário selecionado", "Atenção");
         Funcionario temp = new Funcionario();
         temp.setIdFuncionario(idSelecionado);
-        ControladorCRUDFuncionarios.deletar(temp);
+        ControladorCRUDFuncionarios.desativar(temp);
         limparFormulario();
         resetarTabela();
     }//GEN-LAST:event_botaoDeletarActionPerformed

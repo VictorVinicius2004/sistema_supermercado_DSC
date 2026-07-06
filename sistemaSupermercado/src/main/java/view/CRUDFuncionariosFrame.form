@@ -378,7 +378,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="botaoDeletar">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Deletar"/>
+            <Property name="text" type="java.lang.String" value="Desativar"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botaoDeletarActionPerformed"/>

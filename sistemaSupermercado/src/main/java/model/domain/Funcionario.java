@@ -13,6 +13,15 @@ public class Funcionario {
     private String cpf;
     private TipoUsuario tipoUsuario;
     private String senhaHash;
+    private boolean ativo;
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
 
     public String getNomeUsuario() {
         return nomeUsuario;

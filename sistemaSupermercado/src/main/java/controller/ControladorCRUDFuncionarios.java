@@ -11,7 +11,7 @@ public class ControladorCRUDFuncionarios {
         FuncionarioDAO.atualizarFuncionario(f);
     }
     
-    public static void deletar(Funcionario f) {
+    public static void desativar(Funcionario f) {
         FuncionarioDAO.deletarFuncionario(f);
     }
     

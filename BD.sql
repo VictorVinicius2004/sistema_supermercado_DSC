@@ -11,7 +11,8 @@ CREATE TABLE Funcionario (
     Tel VARCHAR(50) NOT NULL,
     CPF VARCHAR(14) NOT NULL,
     Tipo_Usuario VARCHAR(50) NOT NULL,
-    Senha VARCHAR(255) NOT NULL
+    Senha VARCHAR(255) NOT NULL,
+    Ativo BOOLEAN NOT NULL DEFAULT 1
 );
 
 CREATE TABLE Mercadoria (
@@ -22,7 +23,8 @@ CREATE TABLE Mercadoria (
     Descricao TEXT,
     Preco_Unitario DECIMAL(10,2) NOT NULL,
     Quantidade_Estoque INT NOT NULL,
-    Fornecedor VARCHAR(50) NOT NULL
+    Fornecedor VARCHAR(50) NOT NULL,
+    Ativo BOOLEAN NOT NULL DEFAULT 1
 );
 
 CREATE TABLE Venda (
@@ -79,3 +81,64 @@ INSERT INTO ItemVenda (ID_Venda, Codigo_Mercadoria, Quantidade, Subtotal) VALUES
 (4, 1, 3, 76.50),
 (4, 6, 2, 14.40),
 (4, 8, 2, 19.00);
+
+INSERT INTO Mercadoria (Nome, Tipo, Modelo, Descricao, Preco_Unitario, Quantidade_Estoque, Fornecedor) VALUES
+('Macarrão Espaguete 500g', 'Alimento', 'Pacote', 'Massa de sêmola tipo espaguete', 4.50, 200, 'Massas Ouro'),
+('Molho de Tomate 340g', 'Alimento', 'Sachê', 'Molho de tomate tradicional', 3.20, 250, 'Massas Ouro'),
+('Refrigerante Cola 2L', 'Bebida', 'Garrafa PET', 'Refrigerante sabor cola', 8.00, 180, 'Bebidas Brasil'),
+('Suco de Laranja 1L', 'Bebida', 'Caixa', 'Suco integral de laranja', 6.90, 90, 'Fazenda Bela Vista'),
+('Papel Higiênico 12 rolos', 'Limpeza', 'Pacote', 'Papel higiênico folha dupla', 22.90, 70, 'Química Limpa'),
+('Sabonete em Barra 90g', 'Higiene', 'Unidade', 'Sabonete hidratante', 2.10, 300, 'Cosméticos Aroma'),
+('Shampoo 350ml', 'Higiene', 'Frasco', 'Shampoo para cabelos normais', 15.90, 60, 'Cosméticos Aroma'),
+('Pão de Forma 500g', 'Padaria', 'Pacote', 'Pão de forma tradicional', 7.50, 100, 'Padaria Trigo Dourado'),
+('Manteiga com Sal 200g', 'Laticínio', 'Pote', 'Manteiga com sal', 11.80, 80, 'Fazenda Bela Vista'),
+('Queijo Mussarela 400g', 'Laticínio', 'Peça', 'Queijo mussarela fatiado', 19.90, 50, 'Fazenda Bela Vista'),
+('Frango Congelado 1kg', 'Açougue', 'Bandeja', 'Frango inteiro congelado', 13.50, 40, 'Frigorífico Bom Sabor'),
+('Carne Moída 1kg', 'Açougue', 'Bandeja', 'Carne bovina moída', 28.90, 35, 'Frigorífico Bom Sabor');
+
+INSERT INTO Venda (Data_Venda, Valor_Total, ID_Identificador_Funcionario) VALUES
+('2026-06-10 11:00:00', 34.00, 2),
+('2026-06-12 16:45:00', 45.10, 1),
+('2026-06-18 09:30:00', 46.70, 2),
+('2026-06-20 19:00:00', 55.90, 1),
+('2026-06-25 13:15:00', 23.40, 2),
+('2026-06-28 20:10:00', 58.50, 1),
+('2026-07-01 10:05:00', 40.50, 2),
+('2026-07-04 17:40:00', 79.70, 1);
+
+INSERT INTO ItemVenda (ID_Venda, Codigo_Mercadoria, Quantidade, Subtotal) VALUES
+(5, 9, 4, 18.00),
+(5, 11, 2, 16.00);
+
+INSERT INTO ItemVenda (ID_Venda, Codigo_Mercadoria, Quantidade, Subtotal) VALUES
+(6, 13, 1, 22.90),
+(6, 14, 3, 6.30),
+(6, 15, 1, 15.90);
+
+INSERT INTO ItemVenda (ID_Venda, Codigo_Mercadoria, Quantidade, Subtotal) VALUES
+(7, 16, 2, 15.00),
+(7, 17, 1, 11.80),
+(7, 18, 1, 19.90);
+
+INSERT INTO ItemVenda (ID_Venda, Codigo_Mercadoria, Quantidade, Subtotal) VALUES
+(8, 19, 2, 27.00),
+(8, 20, 1, 28.90);
+
+INSERT INTO ItemVenda (ID_Venda, Codigo_Mercadoria, Quantidade, Subtotal) VALUES
+(9, 10, 3, 9.60),
+(9, 12, 2, 13.80);
+
+INSERT INTO ItemVenda (ID_Venda, Codigo_Mercadoria, Quantidade, Subtotal) VALUES
+(10, 1, 1, 25.50),
+(10, 4, 2, 24.60),
+(10, 7, 3, 8.40);
+
+INSERT INTO ItemVenda (ID_Venda, Codigo_Mercadoria, Quantidade, Subtotal) VALUES
+(11, 11, 3, 24.00),
+(11, 9, 2, 9.00),
+(11, 16, 1, 7.50);
+
+INSERT INTO ItemVenda (ID_Venda, Codigo_Mercadoria, Quantidade, Subtotal) VALUES
+(12, 18, 2, 39.80),
+(12, 20, 1, 28.90),
+(12, 3, 2, 11.00);

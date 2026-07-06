@@ -10,6 +10,8 @@ public class ControladorLogin {
         if(f == null) {
             return null;
         }
+        else if(!f.isAtivo())
+            return null;
         if(BCrypt.checkpw(senha, f.getSenhaHash())) {
             return f;
         } else {

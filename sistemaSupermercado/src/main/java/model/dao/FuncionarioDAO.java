@@ -85,7 +85,7 @@ public class FuncionarioDAO {
     }
     
     public static void deletarFuncionario(Funcionario funcionario) {
-        String sql = "DELETE FROM Funcionario WHERE ID_Funcionario = ?";
+        String sql = "UPDATE Funcionario SET Ativo = 0 WHERE Id_Funcionario = ?";
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, funcionario.getIdFuncionario());
@@ -98,7 +98,7 @@ public class FuncionarioDAO {
     
     // operações de leitura
     public static List<Funcionario> listarFuncionarios() {
-        String sql = "SELECT * FROM Funcionario";
+        String sql = "SELECT * FROM Funcionario WHERE Ativo = 1";
         List<Funcionario> lista = new ArrayList<>();
 
         try (Connection conn = DatabaseConnection.getConnection();
@@ -116,6 +116,7 @@ public class FuncionarioDAO {
                 f.setTelefone(rs.getString("Tel"));
                 f.setCpf(rs.getString("CPF"));
                 f.setTipoUsuario(TipoUsuario.valueOf(rs.getString("Tipo_Usuario")));
+                f.setAtivo(rs.getBoolean("Ativo"));
 
                 lista.add(f);
             }
@@ -126,7 +127,7 @@ public class FuncionarioDAO {
     }
 
     public static List<Funcionario> buscarFuncionarioFiltrado(Funcionario funcionario) {
-        StringBuilder sql = new StringBuilder("SELECT * FROM Funcionario WHERE 1=1 ");
+        StringBuilder sql = new StringBuilder("SELECT * FROM Funcionario WHERE Ativo = 1 ");
         List<Object> parametros = new ArrayList<>();
 
         if (funcionario.getNome() != null && !funcionario.getNome().isBlank()) {
@@ -166,6 +167,7 @@ public class FuncionarioDAO {
                     f.setTelefone(rs.getString("Tel"));
                     f.setCpf(rs.getString("CPF"));
                     f.setTipoUsuario(TipoUsuario.valueOf(rs.getString("Tipo_Usuario")));
+                    f.setAtivo(rs.getBoolean("Ativo"));
                     lista.add(f);
                 }
             }
@@ -197,6 +199,7 @@ public class FuncionarioDAO {
                     f.setCpf(rs.getString("CPF"));
                     f.setTipoUsuario(TipoUsuario.valueOf(rs.getString("Tipo_Usuario")));
                     f.setSenhaHash(rs.getString("Senha"));
+                    f.setAtivo(rs.getBoolean("Ativo"));
                     return f;
                 }
             }

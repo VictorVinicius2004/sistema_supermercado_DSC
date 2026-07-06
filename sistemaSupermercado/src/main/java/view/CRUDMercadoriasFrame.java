@@ -122,6 +122,7 @@ public class CRUDMercadoriasFrame extends javax.swing.JInternalFrame {
         jTable2 = new javax.swing.JTable();
 
         setClosable(true);
+        setPreferredSize(new java.awt.Dimension(744, 521));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -153,7 +154,7 @@ public class CRUDMercadoriasFrame extends javax.swing.JInternalFrame {
         buttonSalvar.setText("Salvar");
         buttonSalvar.addActionListener(this::buttonSalvarActionPerformed);
 
-        buttonDel.setText("Deletar");
+        buttonDel.setText("Desativar");
         buttonDel.addActionListener(this::buttonDelActionPerformed);
 
         buttonClear.setText("Limpar");
@@ -213,7 +214,7 @@ public class CRUDMercadoriasFrame extends javax.swing.JInternalFrame {
                 .addComponent(buttonClear)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonBuscar)
-                .addContainerGap(171, Short.MAX_VALUE))
+                .addContainerGap(155, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -347,10 +348,10 @@ public class CRUDMercadoriasFrame extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Nenhuma mercadoria selecionada", "Atenção", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        if (JOptionPane.showConfirmDialog(this, "Deletar \"" + txtNome.getText() + "\"?", "Confirmar", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+        if (JOptionPane.showConfirmDialog(this, "Desativar \"" + txtNome.getText() + "\"?", "Confirmar", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             Mercadoria temp = new Mercadoria();
             temp.setCodigo(codigoSelecionado);
-            ControladorCRUDMercadorias.deletar(temp);
+            ControladorCRUDMercadorias.desativar(temp);
             limparFormulario();
             resetarTabela();
         }

@@ -54,7 +54,7 @@ public class MercadoriaDAO {
     }
     
     public static void deletarMercadoria(Mercadoria mercadoria) {
-        String sql = "DELETE FROM Mercadoria WHERE Codigo = ?";
+        String sql = "UPDATE Mercadoria SET Ativo = 0 WHERE Codigo = ?";
         
         try (Connection conn = DatabaseConnection.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -68,7 +68,7 @@ public class MercadoriaDAO {
     }
     
     public static List<Mercadoria> listarMercadorias() {
-        String sql = "SELECT * FROM Mercadoria";
+        String sql = "SELECT * FROM Mercadoria WHERE Ativo = 1";
         List<Mercadoria> lista = new ArrayList<>();
 
         try (Connection conn = DatabaseConnection.getConnection();
@@ -84,6 +84,7 @@ public class MercadoriaDAO {
                 m.setPrecoUnitario(rs.getDouble("Preco_Unitario"));
                 m.setQuantidade(rs.getInt("Quantidade_Estoque"));
                 m.setFornecedor(rs.getString("Fornecedor"));
+                m.setAtivo(rs.getBoolean("Ativo"));
 
                 lista.add(m);
             }
@@ -95,7 +96,7 @@ public class MercadoriaDAO {
 
     public static List<Mercadoria> buscarMercadoriaFiltrada(Mercadoria mercadoria) {
         List<Object> parametros = new ArrayList<>();
-        StringBuilder sql = new StringBuilder("SELECT * FROM Mercadoria WHERE 1=1 ");
+        StringBuilder sql = new StringBuilder("SELECT * FROM Mercadoria WHERE Ativo = 1 ");
         
         if (mercadoria.getNome() != null && !mercadoria.getNome().trim().isEmpty()) {
             sql.append("AND Nome LIKE ? ");
@@ -126,6 +127,7 @@ public class MercadoriaDAO {
                     m.setPrecoUnitario(rs.getDouble("Preco_Unitario"));
                     m.setQuantidade(rs.getInt("Quantidade_Estoque"));
                     m.setFornecedor(rs.getString("Fornecedor"));
+                    m.setAtivo(rs.getBoolean("Ativo"));
                     lista.add(m);
                 }
             }
@@ -153,6 +155,7 @@ public class MercadoriaDAO {
                     m.setPrecoUnitario(rs.getDouble("Preco_Unitario"));
                     m.setQuantidade(rs.getInt("Quantidade_Estoque"));
                     m.setFornecedor(rs.getString("Fornecedor"));
+                    m.setAtivo(rs.getBoolean("Ativo"));
                     return m;
                 }
             }

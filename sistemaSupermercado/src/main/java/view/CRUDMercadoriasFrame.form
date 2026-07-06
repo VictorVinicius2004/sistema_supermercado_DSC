@@ -3,6 +3,9 @@
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
   <Properties>
     <Property name="closable" type="boolean" value="true"/>
+    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[744, 521]"/>
+    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -107,7 +110,7 @@
                   <Component id="buttonClear" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="buttonBuscar" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="171" max="32767" attributes="0"/>
+                  <EmptySpace pref="155" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -231,7 +234,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="buttonDel">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Deletar"/>
+            <Property name="text" type="java.lang.String" value="Desativar"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonDelActionPerformed"/>
