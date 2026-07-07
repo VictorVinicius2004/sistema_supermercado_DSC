@@ -31,7 +31,7 @@ public class CRUDMercadoriasFrame extends javax.swing.JInternalFrame {
             }
         });
 
-        preencherTabela(ControladorCRUDMercadorias.search(null));
+        preencherTabela(ControladorCRUDMercadorias.buscar(null));
     }
     
     private void preencherTabela(List<Mercadoria> list) {
@@ -96,7 +96,7 @@ public class CRUDMercadoriasFrame extends javax.swing.JInternalFrame {
     
     private void resetarTabela() {
         tabela.setRowCount(0);
-        preencherTabela(ControladorCRUDMercadorias.search(null));
+        preencherTabela(ControladorCRUDMercadorias.buscar(null));
     }
     
     @SuppressWarnings("unchecked")
@@ -369,7 +369,7 @@ public class CRUDMercadoriasFrame extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(this, "Mercadoria cadastrada com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
         }
         
-        preencherTabela(ControladorCRUDMercadorias.search(null));
+        preencherTabela(ControladorCRUDMercadorias.buscar(null));
         limparFormulario();
         resetarTabela();
     }//GEN-LAST:event_buttonSalvarActionPerformed
@@ -390,7 +390,7 @@ public class CRUDMercadoriasFrame extends javax.swing.JInternalFrame {
 
     private void buttonClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClearActionPerformed
         limparFormulario();
-        preencherTabela(ControladorCRUDMercadorias.search(null));
+        preencherTabela(ControladorCRUDMercadorias.buscar(null));
     }//GEN-LAST:event_buttonClearActionPerformed
 
     private void buttonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBuscarActionPerformed
@@ -399,7 +399,7 @@ public class CRUDMercadoriasFrame extends javax.swing.JInternalFrame {
 
         Mercadoria filtro = new Mercadoria();
         filtro.setCodigo(Integer.parseInt(cod));
-        List<Mercadoria> lista = ControladorCRUDMercadorias.search(filtro);
+        List<Mercadoria> lista = ControladorCRUDMercadorias.buscar(filtro);
         tabela.setRowCount(0);
         preencherTabela(lista);
 

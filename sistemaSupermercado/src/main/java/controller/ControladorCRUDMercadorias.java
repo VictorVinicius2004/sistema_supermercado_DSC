@@ -22,7 +22,7 @@ public class ControladorCRUDMercadorias {
         return true;
     }
     
-    public static List<Mercadoria> search(Mercadoria m) {
+    public static List<Mercadoria> buscar(Mercadoria m) {
     if (m != null) {
         if (m.getCodigo() != 0) {
             Mercadoria found = MercadoriaDAO.getMercadoria(m.getCodigo());

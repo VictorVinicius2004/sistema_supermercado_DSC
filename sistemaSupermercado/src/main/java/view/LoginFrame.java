@@ -117,12 +117,7 @@ public class LoginFrame extends javax.swing.JFrame {
                 jPasswordField1.setText("");
                 jTextField1.requestFocus();
             }
-        } catch (Exception e) {
-            javax.swing.JOptionPane.showMessageDialog(this,
-                "Erro de conexão:\n" + e.getMessage(), 
-                "\n\nVerifique se a conexão com o banco de dados",
-                javax.swing.JOptionPane.ERROR_MESSAGE);
-        }
+        } catch (Exception e) {}
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

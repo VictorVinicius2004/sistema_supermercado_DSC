@@ -61,25 +61,19 @@ INSERT INTO Mercadoria (Nome, Tipo, Modelo, Descricao, Preco_Unitario, Quantidad
 ('Detergente Líquido 500ml', 'Limpeza', 'Frasco', 'Detergente neutro para louças', 2.80, 300, 'Química Limpa'),
 ('Iogurte de Morango 1L', 'Laticínio', 'Garrafa', 'Iogurte integral batido sabor morango', 9.50, 60, 'Fazenda Bela Vista');
 
-INSERT INTO Venda (Data_Venda, Valor_Total, ID_Identificador_Funcionario) VALUES
-('2026-05-10 14:30:00', 59.90, 2),
-('2026-05-15 09:15:00', 55.00, 1),
-('2026-06-01 10:00:00', 33.00, 1),
-('2026-06-05 18:20:00', 109.90, 2);
+INSERT INTO Venda (Data_Venda, Valor_Total, ID_Identificador_Funcionario, Tipo_Pagamento, Valor_Pago) VALUES
+('2026-05-10 14:30:00', 59.90, 2, 'DINHEIRO', 60.00),
+('2026-05-15 09:15:00', 55.00, 1, 'CARTÃO_CREDITO', 55.00),
+('2026-06-01 10:00:00', 33.00, 1, 'PIX', 33.00),
+('2026-06-05 18:20:00', 109.90, 2, 'DINHEIRO', 110.00);
 
 INSERT INTO ItemVenda (ID_Venda, Codigo_Mercadoria, Quantidade, Subtotal) VALUES
 (1, 1, 2, 51.00),
-(1, 2, 1, 8.90);
-
-INSERT INTO ItemVenda (ID_Venda, Codigo_Mercadoria, Quantidade, Subtotal) VALUES
-(2, 3, 10, 55.00);
-
-INSERT INTO ItemVenda (ID_Venda, Codigo_Mercadoria, Quantidade, Subtotal) VALUES
+(1, 2, 1, 8.90),
+(2, 3, 10, 55.00),
 (3, 5, 1, 18.50),
 (3, 2, 1, 8.90),
-(3, 7, 2, 5.60);
-
-INSERT INTO ItemVenda (ID_Venda, Codigo_Mercadoria, Quantidade, Subtotal) VALUES
+(3, 7, 2, 5.60),
 (4, 1, 3, 76.50),
 (4, 6, 2, 14.40),
 (4, 8, 2, 19.00);
@@ -98,49 +92,35 @@ INSERT INTO Mercadoria (Nome, Tipo, Modelo, Descricao, Preco_Unitario, Quantidad
 ('Frango Congelado 1kg', 'Açougue', 'Bandeja', 'Frango inteiro congelado', 13.50, 40, 'Frigorífico Bom Sabor'),
 ('Carne Moída 1kg', 'Açougue', 'Bandeja', 'Carne bovina moída', 28.90, 35, 'Frigorífico Bom Sabor');
 
-INSERT INTO Venda (Data_Venda, Valor_Total, ID_Identificador_Funcionario) VALUES
-('2026-06-10 11:00:00', 34.00, 2),
-('2026-06-12 16:45:00', 45.10, 1),
-('2026-06-18 09:30:00', 46.70, 2),
-('2026-06-20 19:00:00', 55.90, 1),
-('2026-06-25 13:15:00', 23.40, 2),
-('2026-06-28 20:10:00', 58.50, 1),
-('2026-07-01 10:05:00', 40.50, 2),
-('2026-07-04 17:40:00', 79.70, 1);
+INSERT INTO Venda (Data_Venda, Valor_Total, ID_Identificador_Funcionario, Tipo_Pagamento, Valor_Pago) VALUES
+('2026-06-10 11:00:00', 34.00, 2, 'PIX', 34.00),
+('2026-06-12 16:45:00', 45.10, 1, 'DINHEIRO', 50.00),
+('2026-06-18 09:30:00', 46.70, 2, 'CARTÃO_DEBITO', 46.70),
+('2026-06-20 19:00:00', 55.90, 1, 'CARTÃO_CREDITO', 55.90),
+('2026-06-25 13:15:00', 23.40, 2, 'DINHEIRO', 25.00),
+('2026-06-28 20:10:00', 58.50, 1, 'PIX', 58.50),
+('2026-07-01 10:05:00', 40.50, 2, 'CARTÃO_DEBITO', 40.50),
+('2026-07-04 17:40:00', 79.70, 1, 'DINHEIRO', 100.00);
 
 INSERT INTO ItemVenda (ID_Venda, Codigo_Mercadoria, Quantidade, Subtotal) VALUES
 (5, 9, 4, 18.00),
-(5, 11, 2, 16.00);
-
-INSERT INTO ItemVenda (ID_Venda, Codigo_Mercadoria, Quantidade, Subtotal) VALUES
+(5, 11, 2, 16.00),
 (6, 13, 1, 22.90),
 (6, 14, 3, 6.30),
-(6, 15, 1, 15.90);
-
-INSERT INTO ItemVenda (ID_Venda, Codigo_Mercadoria, Quantidade, Subtotal) VALUES
+(6, 15, 1, 15.90),
 (7, 16, 2, 15.00),
 (7, 17, 1, 11.80),
-(7, 18, 1, 19.90);
-
-INSERT INTO ItemVenda (ID_Venda, Codigo_Mercadoria, Quantidade, Subtotal) VALUES
+(7, 18, 1, 19.90),
 (8, 19, 2, 27.00),
-(8, 20, 1, 28.90);
-
-INSERT INTO ItemVenda (ID_Venda, Codigo_Mercadoria, Quantidade, Subtotal) VALUES
+(8, 20, 1, 28.90),
 (9, 10, 3, 9.60),
-(9, 12, 2, 13.80);
-
-INSERT INTO ItemVenda (ID_Venda, Codigo_Mercadoria, Quantidade, Subtotal) VALUES
+(9, 12, 2, 13.80),
 (10, 1, 1, 25.50),
 (10, 4, 2, 24.60),
-(10, 7, 3, 8.40);
-
-INSERT INTO ItemVenda (ID_Venda, Codigo_Mercadoria, Quantidade, Subtotal) VALUES
+(10, 7, 3, 8.40),
 (11, 11, 3, 24.00),
 (11, 9, 2, 9.00),
-(11, 16, 1, 7.50);
-
-INSERT INTO ItemVenda (ID_Venda, Codigo_Mercadoria, Quantidade, Subtotal) VALUES
+(11, 16, 1, 7.50),
 (12, 18, 2, 39.80),
 (12, 20, 1, 28.90),
 (12, 3, 2, 11.00);

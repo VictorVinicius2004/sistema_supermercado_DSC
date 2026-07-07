@@ -29,7 +29,7 @@ public class CRUDFuncionariosFrame extends javax.swing.JInternalFrame {
                 if (row >= 0) preencherFormulario(row);
             }   
         });
-        preencherTabela(ControladorCRUDFuncionarios.search(null));
+        preencherTabela(ControladorCRUDFuncionarios.buscar(null));
         preencherFormulario(funcionario);
     }
 
@@ -169,7 +169,7 @@ public class CRUDFuncionariosFrame extends javax.swing.JInternalFrame {
     
     private void resetarTabela() {
         tabela.setRowCount(0);
-        preencherTabela(ControladorCRUDFuncionarios.search(null));
+        preencherTabela(ControladorCRUDFuncionarios.buscar(null));
     }
     
     @SuppressWarnings("unchecked")
@@ -443,7 +443,7 @@ public class CRUDFuncionariosFrame extends javax.swing.JInternalFrame {
             Utilitarios.warningMsg("Usuário cadastrado com sucesso, a senha inicial é sempre definida como o cpf", "Sucesso");
         else
             Utilitarios.warningMsg("Nome de Usuário já está em uso","Atenção");
-        preencherTabela(ControladorCRUDFuncionarios.search(null));
+        preencherTabela(ControladorCRUDFuncionarios.buscar(null));
         limparFormulario();
         resetarTabela();
     }//GEN-LAST:event_botaoSalvarActionPerformed
@@ -454,12 +454,12 @@ public class CRUDFuncionariosFrame extends javax.swing.JInternalFrame {
 
     private void botaoFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoFiltrarActionPerformed
         tabela.setRowCount(0);
-        preencherTabela(ControladorCRUDFuncionarios.search(carregarFiltro()));
+        preencherTabela(ControladorCRUDFuncionarios.buscar(carregarFiltro()));
     }//GEN-LAST:event_botaoFiltrarActionPerformed
 
     private void botaoLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoLimparActionPerformed
         limparFormulario();
-        preencherTabela(ControladorCRUDFuncionarios.search(null));
+        preencherTabela(ControladorCRUDFuncionarios.buscar(null));
     }//GEN-LAST:event_botaoLimparActionPerformed
 
     private void botaoDeletarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoDeletarActionPerformed

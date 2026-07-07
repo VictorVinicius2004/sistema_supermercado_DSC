@@ -27,35 +27,29 @@ public class ControladorVendas {
         if (mercadoria == null || quantidade <= 0) {
             return false;
         }
-        
-        // Verifica se tem estoque suficiente
+
         if (mercadoria.getQuantidade() < quantidade) {
             return false;
         }
-        
-        // Verifica se já existe no carrinho, se sim, atualiza a quantidade
+
         for (ItemVenda item : carrinho.getItens()) {
             Mercadoria mCarrinho = (Mercadoria) item.getMercadoria();
             if (mCarrinho.getCodigo() == mercadoria.getCodigo()) {
                 int novaQuantidade = item.getQuantidade() + quantidade;
                 if (mercadoria.getQuantidade() < novaQuantidade) {
-                    return false; // Não tem estoque para a nova quantidade
+                    return false;
                 }
-                
-                // Remove o valor antigo do total
+
                 carrinho.setValorTotal(carrinho.getValorTotal() - item.getSubtotal());
-                
-                // Atualiza item
+
                 item.setQuantidade(novaQuantidade);
                 item.setSubtotal(novaQuantidade * mercadoria.getPrecoUnitario());
-                
-                // Adiciona novo valor ao total
+
                 carrinho.setValorTotal(carrinho.getValorTotal() + item.getSubtotal());
                 return true;
             }
         }
-        
-        // Se não existe, cria um novo item
+
         ItemVenda novoItem = new ItemVenda();
         novoItem.setMercadoria(mercadoria);
         novoItem.setQuantidade(quantidade);

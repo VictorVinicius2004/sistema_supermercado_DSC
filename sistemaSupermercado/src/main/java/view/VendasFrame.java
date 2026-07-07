@@ -49,7 +49,7 @@ public class VendasFrame extends javax.swing.JInternalFrame {
             }
         });
 
-        atualizarTabelaMercadorias(ControladorCRUDMercadorias.search(null));
+        atualizarTabelaMercadorias(ControladorCRUDMercadorias.buscar(null));
     }
 
     VendasFrame() {
@@ -212,12 +212,12 @@ public class VendasFrame extends javax.swing.JInternalFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(txtPreço, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(qtdSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(qtdSpinner, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(tabelaPreço)
                                         .addGap(111, 111, 111)
                                         .addComponent(tabelaQuantidade)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(tabelaCod)
                                     .addComponent(txtCod, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -376,7 +376,7 @@ public class VendasFrame extends javax.swing.JInternalFrame {
             List<Mercadoria> lista = ControladorVendas.buscarMercadoriasPorNome(nome);
             atualizarTabelaMercadorias(lista);
         } else {
-            atualizarTabelaMercadorias(ControladorCRUDMercadorias.search(null));
+            atualizarTabelaMercadorias(ControladorCRUDMercadorias.buscar(null));
         }
     }//GEN-LAST:event_buttonBuscarActionPerformed
 
@@ -431,7 +431,7 @@ public class VendasFrame extends javax.swing.JInternalFrame {
             
             carrinho = new Venda();
             atualizarTabelaCarrinho();
-            atualizarTabelaMercadorias(ControladorCRUDMercadorias.search(null));
+            atualizarTabelaMercadorias(ControladorCRUDMercadorias.buscar(null));
             limparCampos();
         } else {
             Utilitarios.warningMsg("Erro ao registrar a venda no banco de dados.", "Erro Crítico");
@@ -494,7 +494,7 @@ public class VendasFrame extends javax.swing.JInternalFrame {
 
     private void buttonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLimparActionPerformed
         limparCampos();
-        atualizarTabelaMercadorias(controller.ControladorCRUDMercadorias.search(null));
+        atualizarTabelaMercadorias(controller.ControladorCRUDMercadorias.buscar(null));
     }//GEN-LAST:event_buttonLimparActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

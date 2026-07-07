@@ -24,7 +24,7 @@ public class ControladorCRUDFuncionarios {
         return true;
     }
     
-    public static List<Funcionario> search(Funcionario f) {
+    public static List<Funcionario> buscar(Funcionario f) {
         if(f != null)
             return FuncionarioDAO.buscarFuncionarioFiltrado(f);
         else
