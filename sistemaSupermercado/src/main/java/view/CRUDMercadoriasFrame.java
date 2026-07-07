@@ -18,7 +18,12 @@ public class CRUDMercadoriasFrame extends javax.swing.JInternalFrame {
         this.controlador = new ControladorCRUDMercadorias();
         this.tabela = (DefaultTableModel) jTable2.getModel();
 
-        // Ao clicar na tabela, preenche o formulário
+        javax.swing.SpinnerNumberModel spinnerModel = new javax.swing.SpinnerNumberModel(0, 0, null, 1);
+        qtdSpinner.setModel(spinnerModel);
+        
+        this.controlador = new ControladorCRUDMercadorias();
+        this.tabela = (DefaultTableModel) jTable2.getModel();
+        
         jTable2.getSelectionModel().addListSelectionListener(e -> {
             if (!e.getValueIsAdjusting()) {
                 int row = jTable2.getSelectedRow();
@@ -317,34 +322,60 @@ public class CRUDMercadoriasFrame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_txtFornActionPerformed
 
     private void buttonAttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAttActionPerformed
-         if (codigoSelecionado <= 0) {
+        if (codigoSelecionado <= 0) {
             JOptionPane.showMessageDialog(this, "Nenhuma mercadoria selecionada", "Atenção", JOptionPane.WARNING_MESSAGE);
             return;
         }
+        
+        try {
+            double preco = Double.parseDouble(txtPreço.getText().trim().replaceAll(",", "."));
+            if (preco < 0) {
+                JOptionPane.showMessageDialog(this, "O preço unitário não pode ser negativo.", "Atenção", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Digite um valor numérico válido para o preço.", "Atenção", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
         ControladorCRUDMercadorias.atualizar(carregarMercadoriaParaAtualizar());
         JOptionPane.showMessageDialog(this, "Atualizado com sucesso!");
         resetarTabela();
- 
     }//GEN-LAST:event_buttonAttActionPerformed
 
     private void buttonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSalvarActionPerformed
-         if (txtNome.getText().isBlank() ||
+        if (txtNome.getText().isBlank() ||
             txtModelo.getText().isBlank() ||
             txtDesc.getText().isBlank() ||
             txtPreço.getText().isBlank() ||
             txtForn.getText().isBlank()) {
 
             JOptionPane.showMessageDialog(this, "Para salvar uma mercadoria todos os campos devem estar preenchidos", "Atenção", JOptionPane.WARNING_MESSAGE);
+            return;
         }
-        if (ControladorCRUDMercadorias.salvar(carregarFiltro()))
+        
+        try {
+            double preco = Double.parseDouble(txtPreço.getText().trim().replaceAll(",", "."));
+            if (preco < 0) {
+                JOptionPane.showMessageDialog(this, "O preço unitário não pode ser negativo.", "Atenção", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Digite um valor numérico válido para o preço.", "Atenção", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        if (ControladorCRUDMercadorias.salvar(carregarFiltro())) {
             JOptionPane.showMessageDialog(this, "Mercadoria cadastrada com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
+        }
+        
         preencherTabela(ControladorCRUDMercadorias.search(null));
         limparFormulario();
         resetarTabela();
     }//GEN-LAST:event_buttonSalvarActionPerformed
 
     private void buttonDelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDelActionPerformed
-         if (codigoSelecionado <= 0) {
+        if (codigoSelecionado <= 0) {
             JOptionPane.showMessageDialog(this, "Nenhuma mercadoria selecionada", "Atenção", JOptionPane.WARNING_MESSAGE);
             return;
         }
